@@ -4,11 +4,19 @@
 .radar-caption{z-index:1}
 .bus-mark{background:#edf1e9;color:#65816b;border-radius:50%;width:28px;height:28px;display:grid;place-items:center;font-size:14px}
 .bus-content{border-top:1px solid #edf0e9;padding-top:10px;display:grid;gap:7px}
+.bus-countdown-wrap{display:flex;flex-direction:column;gap:3px;padding:1px 0 7px}
+.bus-countdown-wrap strong{font:500 24px Georgia,serif;color:#4b6251;letter-spacing:-.03em}
+.bus-countdown-wrap span{font-size:7px;letter-spacing:.12em;color:#a1a99f}
 .bus-status{display:flex;align-items:center;gap:6px;color:#89968c;font-size:8px;letter-spacing:.08em;text-transform:uppercase}
 .bus-status i{width:6px;height:6px;border-radius:50%;background:#d0a86b}
 .bus-content>strong{font:500 15px Georgia,serif;color:#4b6251}
 .bus-meta{display:flex;gap:12px;font-size:8px;color:#97a097}
+.bus-location{font-size:8px;color:#97a097}
 .alexa-hint{font-size:8px;line-height:1.35;color:#9aa39a;padding-top:5px}
+.field{display:block;margin:12px 0 5px;font-size:12px;color:#53675a}
+.field:first-child{margin-top:14px}
+.check-field{display:flex;align-items:flex-start;gap:8px;margin-top:14px;font-size:11px;line-height:1.4;color:#53675a}
+.check-field input{margin:1px 0 0;accent-color:#42684f}
 @media(min-width:1400px){.side-column{grid-template-rows:1.12fr .88fr 1.42fr .93fr}}
 @media(max-width:900px){.side-column{grid-template-rows:auto auto auto auto}.buszone{min-height:160px}.weather .radar{min-height:130px}}
 
