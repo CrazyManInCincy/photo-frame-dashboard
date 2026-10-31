@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#f4f3ed"><title>Morning Board</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="frame.css">
+</head>
+<body>
+<main class="board">
+  <header class="topbar"><div class="brand"><span class="brand-mark">✳</span><span id="familyName">MORNING BOARD</span></div><div class="date-line"><span id="fullDate"></span><span class="dot"></span><span id="time"></span></div><button class="settings" id="settings" aria-label="Personalize">⚙</button></header>
+  <section class="welcome panel"><div class="welcome-copy"><div class="eyebrow"><i class="live-dot"></i> A GOOD START, TOGETHER</div><h1>One thing at a time.<br><em>We’ve got this.</em></h1><p>School prep, the day ahead, and a little help from Alexa.</p></div><div class="big-clock"><span id="bigTime">8:30</span><div><b id="dayName">FRIDAY</b><small id="shortDate">OCTOBER 31</small></div></div><div class="morning-art" aria-hidden="true"><div class="sun"></div><div class="hill hill-one"></div><div class="hill hill-two"></div><div class="hill hill-three"></div><div class="bird">⌁ &nbsp;⌁</div></div></section>
+  <div class="layout">
+    <section class="agenda panel"><div class="section-head"><div><div class="eyebrow">SCROLL THROUGH THE WEEK</div><h2>Calendar agenda</h2></div><span class="status-pill" id="calendarStatus">SAMPLE</span></div><div class="week-strip" id="weekStrip"></div><div class="agenda-date"><span id="selectedDate"></span><button id="editAgenda" class="edit-small">Edit day ✎</button></div><div class="agenda-scroll" id="agendaList"></div><div class="source-note" id="calendarNote">Sample events · connect a calendar to make this live</div></section>
+    <div class="side-column">
+      <section class="prep panel"><div class="section-head"><div><div class="eyebrow">BEFORE WE GO</div><h2>School morning prep</h2></div><span class="check-count" id="checkCount">0 / 0</span></div><div class="prep-progress"><span id="progressFill"></span></div><div class="task-list" id="taskList"></div><button class="add-link" id="editTasks">＋ Edit prep list</button></section>
+      <section class="buszone panel"><div class="section-head"><div><div class="eyebrow">BUSZONE</div><h2>School bus</h2></div><span class="bus-mark">↗</span></div><div class="bus-content"><div class="bus-status"><i></i><span id="busStatus">Waiting for connection</span></div><strong id="busMessage">Bus updates will show here</strong><div class="bus-meta"><span id="busRoute">Route · —</span><span id="busEta">ETA · —</span></div></div><div class="connection-note"><span class="connection-dot"></span><span>BusZone is not connected yet</span></div></section>
+      <section class="weather panel"><div class="section-head"><div><div class="eyebrow">TODAY’S WEATHER</div><h2 id="weatherPlace">45103 · Batavia, OH</h2></div><span class="weather-mark">☀</span></div><div class="weather-main"><div><strong id="temperature">—°</strong><span id="weatherText">Loading local forecast…</span></div><div class="hi-lo"><span>H <b id="high">—°</b></span><span>L <b id="low">—°</b></span></div></div><div class="radar"><img id="radarImage" src="https://radar.weather.gov/ridge/standard/KILN_loop.gif" alt="Latest National Weather Service radar loop for Cincinnati, Ohio"><span class="radar-caption">NWS · CINCINNATI RADAR</span></div><div class="weather-source"><span>National Weather Service</span><b id="weatherUpdated">loading</b></div></section>
+      <section class="alexa panel"><div class="section-head"><div><div class="eyebrow">ALEXA</div><h2>Voice announcements</h2></div><span class="alexa-mark">◖))</span></div><div id="alexaList" class="alexa-list"></div><button class="add-link" id="editAlexa">＋ Edit announcement plan</button><div class="connection-note"><span class="connection-dot"></span><span>BusZone → Alexa needs a relay</span></div><div class="alexa-hint">A Home Assistant bridge can relay bus alerts to your Echo.</div></section>
+    </div>
+  </div>
+  <footer><span>MADE FOR BUSY MORNINGS</span><span>AGENDA · BUSZONE · WEATHER · ALEXA</span><button id="personalize">PERSONALIZE</button></footer>
+</main>
+<dialog id="editor"><form method="dialog"><button class="close" aria-label="Close">×</button><div class="eyebrow">MAKE IT YOURS</div><h2 id="dialogTitle"></h2><div id="dialogBody"></div><div class="dialog-actions"><button type="button" class="secondary" id="cancel">Cancel</button><button type="button" class="primary" id="save">Save changes</button></div></form></dialog>
+<script src="app.js"></script>
+</body></html>
+
