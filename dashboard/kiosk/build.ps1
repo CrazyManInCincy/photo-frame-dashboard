@@ -36,6 +36,28 @@ Run "$bt\aapt2.exe" @('compile', '--dir', 'res', '-o', 'build\res.zip')
 Run "$bt\aapt2.exe" (@('link', '-o', 'build\base.apk', '-I', $jar, '--manifest', 'AndroidManifest.xml') + $assets + @('build\res.zip',
   '--java', 'build\gen', '--min-sdk-version', '23', '--target-sdk-version', '28', '--version-code', '2', '--version-name', '1.1'))
 
+# AAPT2 on Windows stores asset paths with backslashes in the APK. Android's AssetManager
+# expects forward slashes, so normalize the ZIP entries before signing when a site is bundled.
+if ($env:KIOSK_SITE) {
+  Add-Type -AssemblyName System.IO.Compression.FileSystem
+  $buildDir = (Resolve-Path 'build').Path
+  $normalizedApk = Join-Path $buildDir 'normalized.apk'
+  $sourceZip = [IO.Compression.ZipFile]::OpenRead((Resolve-Path 'build\base.apk'))
+  $normalizedZip = [IO.Compression.ZipFile]::Open($normalizedApk, [IO.Compression.ZipArchiveMode]::Create)
+  try {
+    foreach ($entry in $sourceZip.Entries) {
+      $entryName = $entry.FullName.Replace('\', '/')
+      $newEntry = $normalizedZip.CreateEntry($entryName)
+      $inputStream = $entry.Open()
+      $outputStream = $newEntry.Open()
+      try { $inputStream.CopyTo($outputStream) }
+      finally { $outputStream.Dispose(); $inputStream.Dispose() }
+    }
+  }
+  finally { $normalizedZip.Dispose(); $sourceZip.Dispose() }
+  Move-Item -LiteralPath $normalizedApk -Destination (Join-Path $buildDir 'base.apk') -Force
+}
+
 $src = @(Get-ChildItem src -Recurse -Filter *.java | % FullName) + @('build\gen\com\wesbos\homehq\R.java')
 Run 'javac' (@('-nowarn', '-source', '8', '-target', '8', '-classpath', $jar, '-d', 'build\classes') + $src)
 
@@ -57,3 +79,4 @@ if (-not (Test-Path $ks)) {
 }
 Run "$bt\apksigner.bat" @('sign', '--ks', $ks, '--ks-pass', 'pass:android', '--key-pass', 'pass:android', '--out', 'build\homehq.apk', 'build\aligned.apk')
 Write-Output "Built kiosk\build\homehq.apk"
+
