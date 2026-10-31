@@ -7,6 +7,7 @@ A frame-friendly home dashboard inspired by Wes Bos’s [photo-frame-dashboard](
 - Live local forecast from the National Weather Service for ZIP 45103 (Batavia, Ohio), with a Cincinnati radar loop.
 - Scrollable seven-day agenda, editable directly on the dashboard.
 - School morning preparation checklist with saved completion state.
+- Configurable leave-for-bus countdown, with an optional spoken reminder on the frame when its speech engine is available.
 - BusZone panel and Alexa announcement plan, ready for a future connection.
 - Layout adapts to a phone or tablet for editing.
 
