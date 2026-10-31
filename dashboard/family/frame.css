@@ -31,6 +31,11 @@
   .bus-content{padding-top:6px;gap:4px}
   .bus-countdown-wrap{padding:0 0 4px}
   .bus-countdown-wrap strong{font-size:22px}
+  .task-list{min-height:0}
+  .buszone .connection-note{display:none}
+  .bus-meta,.bus-location{font-size:7px}
+  .bus-content>strong{font-size:13px}
+  .bus-status{font-size:7px}
   .alexa-list{gap:5px}
   .alexa-item{padding:6px}
 }
